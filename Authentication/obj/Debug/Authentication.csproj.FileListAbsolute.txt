@@ -37,3 +37,17 @@ C:\repos\ExchangeCrawler_NETFramework\Authentication\obj\Debug\Authentication.cs
 C:\repos\ExchangeCrawler_NETFramework\Authentication\obj\Debug\Authentication.csproj.CopyComplete
 C:\repos\ExchangeCrawler_NETFramework\Authentication\obj\Debug\Authentication.dll
 C:\repos\ExchangeCrawler_NETFramework\Authentication\obj\Debug\Authentication.pdb
+C:\Users\ckmaster\source\repos\ExchangeCrawler_NETFramework\Authentication\bin\Debug\Authentication.dll
+C:\Users\ckmaster\source\repos\ExchangeCrawler_NETFramework\Authentication\bin\Debug\Authentication.pdb
+C:\Users\ckmaster\source\repos\ExchangeCrawler_NETFramework\Authentication\bin\Debug\Microsoft.Exchange.WebServices.Auth.dll
+C:\Users\ckmaster\source\repos\ExchangeCrawler_NETFramework\Authentication\bin\Debug\Microsoft.Exchange.WebServices.dll
+C:\Users\ckmaster\source\repos\ExchangeCrawler_NETFramework\Authentication\bin\Debug\Microsoft.IdentityModel.Extensions.dll
+C:\Users\ckmaster\source\repos\ExchangeCrawler_NETFramework\Authentication\bin\Debug\Microsoft.Exchange.WebServices.pdb
+C:\Users\ckmaster\source\repos\ExchangeCrawler_NETFramework\Authentication\bin\Debug\Microsoft.Exchange.WebServices.xml
+C:\Users\ckmaster\source\repos\ExchangeCrawler_NETFramework\Authentication\bin\Debug\Microsoft.Exchange.WebServices.Auth.pdb
+C:\Users\ckmaster\source\repos\ExchangeCrawler_NETFramework\Authentication\bin\Debug\Microsoft.Exchange.WebServices.Auth.xml
+C:\Users\ckmaster\source\repos\ExchangeCrawler_NETFramework\Authentication\obj\Debug\Authentication.csproj.CoreCompileInputs.cache
+C:\Users\ckmaster\source\repos\ExchangeCrawler_NETFramework\Authentication\obj\Debug\Authentication.csproj.CopyComplete
+C:\Users\ckmaster\source\repos\ExchangeCrawler_NETFramework\Authentication\obj\Debug\Authentication.dll
+C:\Users\ckmaster\source\repos\ExchangeCrawler_NETFramework\Authentication\obj\Debug\Authentication.pdb
+C:\Users\ckmaster\source\repos\ExchangeCrawler_NETFramework\Authentication\obj\Debug\Authentication.csprojAssemblyReference.cache

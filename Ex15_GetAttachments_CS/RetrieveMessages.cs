@@ -3,6 +3,7 @@ using System.IO;
 using System.Collections.ObjectModel;
 using System.Linq;
 using Microsoft.Exchange.WebServices.Data;
+using System.Collections.Generic;
 
 namespace ExchangeCrawl
 {
@@ -15,31 +16,28 @@ namespace ExchangeCrawl
         {
             Folder rootFolder = Folder.Bind(service, WellKnownFolderName.MsgFolderRoot);
             FindFoldersResults childFolders = rootFolder.FindFolders(new FolderView(rootFolder.ChildFolderCount));
+            List<MessageIndexObject> messageIndexObjects = new List<MessageIndexObject>();
             foreach (Folder f in childFolders)
             {
                 if (String.Equals(f.DisplayName, "Inbox"))
                 {
                     Folder inbox = f;
-                    //FindItemsResults<Item> items = GetMessages(inbox);
-                    GetMessages(inbox);
-                    //foreach (Item i in items)
-                    //{
-                    //    Console.WriteLine(i.Subject);
-                    //}
-                    //Console.ReadLine();
+                    messageIndexObjects = GetMessages(inbox);
                 }
             }
+            Indexer indexer = new Indexer();
+            indexer.PushMessages(messageIndexObjects);
             Console.ReadLine();
         }
 
-        //public static FindItemsResults<Item> GetMessages(Folder folder)
-        public static void GetMessages(Folder folder)
+        public static List<MessageIndexObject> GetMessages(Folder folder)
         {
             int itemCount = folder.TotalCount;
             FindItemsResults<Item> results = null;
+            List<MessageIndexObject> messageIndexObjects = new List<MessageIndexObject>();
 
-            int j = 1;
-            for (int i = 0; i < 30; i+=10)
+            //int j = 1;
+            for (int i = 0; i < 100; i+=10)
             {
                 ItemView view = new ItemView(10, i);
                 results = service.FindItems(folder.Id, view);
@@ -48,12 +46,14 @@ namespace ExchangeCrawl
 
                 foreach (Item k in results)
                 {
-                    Console.WriteLine($"{j.ToString()}. {k.Subject}");
-                    Console.WriteLine(k.TextBody);
-                    Console.WriteLine(k.ConversationId);
-                    j++;
+                    //Console.WriteLine($"{j.ToString()}. {k.Subject}");
+                    //Console.WriteLine(k.TextBody);
+                    //Console.WriteLine(k.ConversationId);
+                    //j++;
+                    messageIndexObjects.Add(new MessageIndexObject(k.Subject, k.TextBody, k.ConversationId));
                 }
             }
+            return messageIndexObjects;
         }
     }
 }
