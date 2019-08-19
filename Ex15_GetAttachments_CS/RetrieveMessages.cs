@@ -1,6 +1,7 @@
 ﻿using System;
 using System.IO;
 using System.Collections.ObjectModel;
+using System.Linq;
 using Microsoft.Exchange.WebServices.Data;
 
 namespace ExchangeCrawl
@@ -12,30 +13,47 @@ namespace ExchangeCrawl
 
         static void Main(string[] args)
         {
-            //FindItemsResults<Item> items = GetMessages();
-            //foreach(Item i in items)
-            //{
-            //    Console.WriteLine(i.Subject);
-            //}
-            //Console.ReadLine();
-
-            Folder folder = GetFolder();
-            FindFoldersResults childFolders = folder.FindFolders(new FolderView(folder.ChildFolderCount));
+            Folder rootFolder = Folder.Bind(service, WellKnownFolderName.MsgFolderRoot);
+            FindFoldersResults childFolders = rootFolder.FindFolders(new FolderView(rootFolder.ChildFolderCount));
+            foreach (Folder f in childFolders)
+            {
+                if (String.Equals(f.DisplayName, "Inbox"))
+                {
+                    Folder inbox = f;
+                    //FindItemsResults<Item> items = GetMessages(inbox);
+                    GetMessages(inbox);
+                    //foreach (Item i in items)
+                    //{
+                    //    Console.WriteLine(i.Subject);
+                    //}
+                    //Console.ReadLine();
+                }
+            }
+            Console.ReadLine();
         }
 
-        public static FindItemsResults<Item> GetMessages()
+        //public static FindItemsResults<Item> GetMessages(Folder folder)
+        public static void GetMessages(Folder folder)
         {
-            ItemView view = new ItemView(10);
-            FindItemsResults<Item> results = service.FindItems(WellKnownFolderName.Inbox, view);
-            PropertySet propSet = new PropertySet(BasePropertySet.FirstClassProperties, EmailMessageSchema.TextBody);
-            service.LoadPropertiesForItems(results, propSet);
-            return results;
-        }
+            int itemCount = folder.TotalCount;
+            FindItemsResults<Item> results = null;
 
-        public static Folder GetFolder()
-        {
-            Folder rootfolder = Folder.Bind(service, WellKnownFolderName.MsgFolderRoot);
-            return rootfolder;
+            int j = 1;
+            for (int i = 0; i < 30; i+=10)
+            {
+                ItemView view = new ItemView(10, i);
+                results = service.FindItems(folder.Id, view);
+                PropertySet propSet = new PropertySet(BasePropertySet.FirstClassProperties, EmailMessageSchema.TextBody);
+                service.LoadPropertiesForItems(results, propSet);
+
+                foreach (Item k in results)
+                {
+                    Console.WriteLine($"{j.ToString()}. {k.Subject}");
+                    Console.WriteLine(k.TextBody);
+                    Console.WriteLine(k.ConversationId);
+                    j++;
+                }
+            }
         }
     }
 }
