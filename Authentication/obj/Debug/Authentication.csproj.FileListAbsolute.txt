@@ -1,0 +1,26 @@
+C:\Users\ckidd\Downloads\Exchange 2013 101 Code Samples\Exchange 2013 Get attachments on Exchange items programmatically\C#\Authentication\obj\Debug\Authentication.csprojAssemblyReference.cache
+C:\Users\ckidd\Downloads\Exchange 2013 101 Code Samples\Exchange 2013 Get attachments on Exchange items programmatically\C#\Authentication\obj\Debug\Authentication.csproj.CoreCompileInputs.cache
+C:\Users\ckidd\Downloads\Exchange 2013 101 Code Samples\Exchange 2013 Get attachments on Exchange items programmatically\C#\Authentication\bin\Debug\Authentication.dll
+C:\Users\ckidd\Downloads\Exchange 2013 101 Code Samples\Exchange 2013 Get attachments on Exchange items programmatically\C#\Authentication\bin\Debug\Authentication.pdb
+C:\Users\ckidd\Downloads\Exchange 2013 101 Code Samples\Exchange 2013 Get attachments on Exchange items programmatically\C#\Authentication\bin\Debug\Microsoft.Exchange.WebServices.Auth.dll
+C:\Users\ckidd\Downloads\Exchange 2013 101 Code Samples\Exchange 2013 Get attachments on Exchange items programmatically\C#\Authentication\bin\Debug\Microsoft.Exchange.WebServices.dll
+C:\Users\ckidd\Downloads\Exchange 2013 101 Code Samples\Exchange 2013 Get attachments on Exchange items programmatically\C#\Authentication\bin\Debug\Microsoft.Exchange.WebServices.pdb
+C:\Users\ckidd\Downloads\Exchange 2013 101 Code Samples\Exchange 2013 Get attachments on Exchange items programmatically\C#\Authentication\bin\Debug\Microsoft.Exchange.WebServices.xml
+C:\Users\ckidd\Downloads\Exchange 2013 101 Code Samples\Exchange 2013 Get attachments on Exchange items programmatically\C#\Authentication\bin\Debug\Microsoft.Exchange.WebServices.Auth.pdb
+C:\Users\ckidd\Downloads\Exchange 2013 101 Code Samples\Exchange 2013 Get attachments on Exchange items programmatically\C#\Authentication\bin\Debug\Microsoft.Exchange.WebServices.Auth.xml
+C:\Users\ckidd\Downloads\Exchange 2013 101 Code Samples\Exchange 2013 Get attachments on Exchange items programmatically\C#\Authentication\obj\Debug\Authentication.csproj.CopyComplete
+C:\Users\ckidd\Downloads\Exchange 2013 101 Code Samples\Exchange 2013 Get attachments on Exchange items programmatically\C#\Authentication\obj\Debug\Authentication.dll
+C:\Users\ckidd\Downloads\Exchange 2013 101 Code Samples\Exchange 2013 Get attachments on Exchange items programmatically\C#\Authentication\obj\Debug\Authentication.pdb
+C:\repos\ExchangeMessageRetrieval_NETFramework\Authentication\bin\Debug\Authentication.dll
+C:\repos\ExchangeMessageRetrieval_NETFramework\Authentication\bin\Debug\Authentication.pdb
+C:\repos\ExchangeMessageRetrieval_NETFramework\Authentication\bin\Debug\Microsoft.Exchange.WebServices.Auth.dll
+C:\repos\ExchangeMessageRetrieval_NETFramework\Authentication\bin\Debug\Microsoft.Exchange.WebServices.dll
+C:\repos\ExchangeMessageRetrieval_NETFramework\Authentication\bin\Debug\Microsoft.Exchange.WebServices.pdb
+C:\repos\ExchangeMessageRetrieval_NETFramework\Authentication\bin\Debug\Microsoft.Exchange.WebServices.xml
+C:\repos\ExchangeMessageRetrieval_NETFramework\Authentication\bin\Debug\Microsoft.Exchange.WebServices.Auth.pdb
+C:\repos\ExchangeMessageRetrieval_NETFramework\Authentication\bin\Debug\Microsoft.Exchange.WebServices.Auth.xml
+C:\repos\ExchangeMessageRetrieval_NETFramework\Authentication\obj\Debug\Authentication.csprojAssemblyReference.cache
+C:\repos\ExchangeMessageRetrieval_NETFramework\Authentication\obj\Debug\Authentication.csproj.CoreCompileInputs.cache
+C:\repos\ExchangeMessageRetrieval_NETFramework\Authentication\obj\Debug\Authentication.csproj.CopyComplete
+C:\repos\ExchangeMessageRetrieval_NETFramework\Authentication\obj\Debug\Authentication.dll
+C:\repos\ExchangeMessageRetrieval_NETFramework\Authentication\obj\Debug\Authentication.pdb

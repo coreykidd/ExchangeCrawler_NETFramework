@@ -1,0 +1,16 @@
+C:\Users\ckidd\Downloads\Exchange 2013 101 Code Samples\Exchange 2013 Get attachments on Exchange items programmatically\C#\Ex15_GetAttachments_CS\obj\x86\Debug\Ex15_GetAttachments_CS.csprojAssemblyReference.cache
+C:\Users\ckidd\Downloads\Exchange 2013 101 Code Samples\Exchange 2013 Get attachments on Exchange items programmatically\C#\Ex15_GetAttachments_CS\obj\x86\Debug\Ex15_GetAttachments_CS.csproj.CoreCompileInputs.cache
+C:\Users\ckidd\Downloads\Exchange 2013 101 Code Samples\Exchange 2013 Get attachments on Exchange items programmatically\C#\Ex15_GetAttachments_CS\bin\Debug\Ex15_GetAttachments_CS.exe.config
+C:\Users\ckidd\Downloads\Exchange 2013 101 Code Samples\Exchange 2013 Get attachments on Exchange items programmatically\C#\Ex15_GetAttachments_CS\bin\Debug\Ex15_GetAttachments_CS.exe
+C:\Users\ckidd\Downloads\Exchange 2013 101 Code Samples\Exchange 2013 Get attachments on Exchange items programmatically\C#\Ex15_GetAttachments_CS\bin\Debug\Ex15_GetAttachments_CS.pdb
+C:\Users\ckidd\Downloads\Exchange 2013 101 Code Samples\Exchange 2013 Get attachments on Exchange items programmatically\C#\Ex15_GetAttachments_CS\bin\Debug\Authentication.dll
+C:\Users\ckidd\Downloads\Exchange 2013 101 Code Samples\Exchange 2013 Get attachments on Exchange items programmatically\C#\Ex15_GetAttachments_CS\bin\Debug\Microsoft.Exchange.WebServices.Auth.dll
+C:\Users\ckidd\Downloads\Exchange 2013 101 Code Samples\Exchange 2013 Get attachments on Exchange items programmatically\C#\Ex15_GetAttachments_CS\bin\Debug\Microsoft.Exchange.WebServices.dll
+C:\Users\ckidd\Downloads\Exchange 2013 101 Code Samples\Exchange 2013 Get attachments on Exchange items programmatically\C#\Ex15_GetAttachments_CS\bin\Debug\Authentication.pdb
+C:\Users\ckidd\Downloads\Exchange 2013 101 Code Samples\Exchange 2013 Get attachments on Exchange items programmatically\C#\Ex15_GetAttachments_CS\bin\Debug\Microsoft.Exchange.WebServices.pdb
+C:\Users\ckidd\Downloads\Exchange 2013 101 Code Samples\Exchange 2013 Get attachments on Exchange items programmatically\C#\Ex15_GetAttachments_CS\bin\Debug\Microsoft.Exchange.WebServices.xml
+C:\Users\ckidd\Downloads\Exchange 2013 101 Code Samples\Exchange 2013 Get attachments on Exchange items programmatically\C#\Ex15_GetAttachments_CS\bin\Debug\Microsoft.Exchange.WebServices.Auth.pdb
+C:\Users\ckidd\Downloads\Exchange 2013 101 Code Samples\Exchange 2013 Get attachments on Exchange items programmatically\C#\Ex15_GetAttachments_CS\bin\Debug\Microsoft.Exchange.WebServices.Auth.xml
+C:\Users\ckidd\Downloads\Exchange 2013 101 Code Samples\Exchange 2013 Get attachments on Exchange items programmatically\C#\Ex15_GetAttachments_CS\obj\x86\Debug\Ex15_GetAttachments_CS.csproj.CopyComplete
+C:\Users\ckidd\Downloads\Exchange 2013 101 Code Samples\Exchange 2013 Get attachments on Exchange items programmatically\C#\Ex15_GetAttachments_CS\obj\x86\Debug\Ex15_GetAttachments_CS.exe
+C:\Users\ckidd\Downloads\Exchange 2013 101 Code Samples\Exchange 2013 Get attachments on Exchange items programmatically\C#\Ex15_GetAttachments_CS\obj\x86\Debug\Ex15_GetAttachments_CS.pdb
