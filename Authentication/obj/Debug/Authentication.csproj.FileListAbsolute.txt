@@ -51,3 +51,4 @@ C:\Users\ckmaster\source\repos\ExchangeCrawler_NETFramework\Authentication\obj\D
 C:\Users\ckmaster\source\repos\ExchangeCrawler_NETFramework\Authentication\obj\Debug\Authentication.dll
 C:\Users\ckmaster\source\repos\ExchangeCrawler_NETFramework\Authentication\obj\Debug\Authentication.pdb
 C:\Users\ckmaster\source\repos\ExchangeCrawler_NETFramework\Authentication\obj\Debug\Authentication.csprojAssemblyReference.cache
+C:\repos\ExchangeCrawler_NETFramework\Authentication\bin\Debug\Microsoft.IdentityModel.Extensions.dll

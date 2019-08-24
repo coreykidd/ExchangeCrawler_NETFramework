@@ -27,7 +27,6 @@ namespace ExchangeCrawl
             }
             Indexer indexer = new Indexer();
             indexer.PushMessages(messageIndexObjects);
-            Console.ReadLine();
         }
 
         public static List<MessageIndexObject> GetMessages(Folder folder)
