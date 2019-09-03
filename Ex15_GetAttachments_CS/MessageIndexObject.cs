@@ -10,13 +10,13 @@ namespace ExchangeCrawl
     {
         public string Subject { get; set; }
         public string Body { get; set; }
-        public string ConversationId { get; set; }
+        public string HexEntryId { get; set; }
 
         public MessageIndexObject(string subject, string body, string conversationId)
         {
             this.Subject = subject;
             this.Body = body;
-            this.ConversationId = conversationId;
+            this.HexEntryId = conversationId;
         }
     }
 }

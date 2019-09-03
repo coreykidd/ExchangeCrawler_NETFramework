@@ -17,42 +17,87 @@ namespace ExchangeCrawl
             Folder rootFolder = Folder.Bind(service, WellKnownFolderName.MsgFolderRoot);
             FindFoldersResults childFolders = rootFolder.FindFolders(new FolderView(rootFolder.ChildFolderCount));
             List<MessageIndexObject> messageIndexObjects = new List<MessageIndexObject>();
+            List<Folder> allFolders = new List<Folder>();
+
+            //Build the allFolders list
             foreach (Folder f in childFolders)
             {
-                if (String.Equals(f.DisplayName, "Inbox"))
+                if ((String.Equals(f.DisplayName, "Inbox")) || (String.Equals(f.DisplayName, "Conversation History"))
+                    || (String.Equals(f.DisplayName, "Save")) || (String.Equals(f.DisplayName, "Trips")))
                 {
-                    Folder inbox = f;
-                    messageIndexObjects = GetMessages(inbox);
+                    allFolders.Add(f);
+                    if (f.ChildFolderCount > 0)
+                    {
+                        FolderView folderView = new FolderView(f.ChildFolderCount);
+                        GetSubFolders(f, folderView, allFolders);
+                    }
                 }
             }
-            Indexer indexer = new Indexer();
-            indexer.PushMessages(messageIndexObjects);
+
+            //Get all messages in all folders
+            //Moved push into this for loop so they could be pushed in and begin indexing rather than doing all at once
+            foreach (Folder f in allFolders)
+            {
+                GetMessages(f);
+                //Indexer indexer = new Indexer();
+                //indexer.PushMessages(messageIndexObjects);
+            }
         }
 
-        public static List<MessageIndexObject> GetMessages(Folder folder)
+        public static void GetSubFolders(Folder folder, FolderView folderView, List<Folder> allFolders)
+        {
+            FindFoldersResults subFolders = folder.FindFolders(folderView);
+            allFolders.AddRange(subFolders.Folders);
+
+            foreach (Folder f in subFolders)
+            {
+                if (f.ChildFolderCount > 0)
+                {
+                    FolderView folderViewSub = new FolderView(f.ChildFolderCount);
+                    GetSubFolders(f, folderViewSub, allFolders);
+                }
+            }
+        }
+
+        //public static List<MessageIndexObject> GetMessages(Folder folder)
+        public static void GetMessages(Folder folder)
         {
             int itemCount = folder.TotalCount;
             FindItemsResults<Item> results = null;
-            List<MessageIndexObject> messageIndexObjects = new List<MessageIndexObject>();
+            //List<MessageIndexObject> messageIndexObjects = new List<MessageIndexObject>();
 
-            //int j = 1;
-            for (int i = 0; i < 100; i+=10)
+            for (int i = 0; i < itemCount; i += 200)
             {
+                List<MessageIndexObject> messageIndexObjects = new List<MessageIndexObject>();
                 ItemView view = new ItemView(10, i);
                 results = service.FindItems(folder.Id, view);
                 PropertySet propSet = new PropertySet(BasePropertySet.FirstClassProperties, EmailMessageSchema.TextBody);
-                service.LoadPropertiesForItems(results, propSet);
 
-                foreach (Item k in results)
+                ExtendedPropertyDefinition PR_EntryId = new ExtendedPropertyDefinition(0x0FFF, MapiPropertyType.Binary);
+                propSet.Add(ItemSchema.StoreEntryId);
+                propSet.Add(PR_EntryId);
+
+                if (results.Items.Count > 0)
                 {
-                    //Console.WriteLine($"{j.ToString()}. {k.Subject}");
-                    //Console.WriteLine(k.TextBody);
-                    //Console.WriteLine(k.ConversationId);
-                    //j++;
-                    messageIndexObjects.Add(new MessageIndexObject(k.Subject, k.TextBody, k.ConversationId));
+                    service.LoadPropertiesForItems(results, propSet);
+
+                    foreach (Item k in results)
+                    {
+                        Byte[] EntryVal = null;
+                        String HexEntryId = "";
+                        if (k.TryGetProperty(PR_EntryId, out EntryVal))
+                        {
+                            HexEntryId = BitConverter.ToString(EntryVal).Replace("-", "");
+                        }
+                        messageIndexObjects.Add(new MessageIndexObject(k.Subject, k.TextBody, HexEntryId));
+                        //Console.WriteLine(HexEntryId);
+                        //Console.ReadLine();
+                    }
+                    //Push 200 messages for indexing at a time
+                    Indexer indexer = new Indexer();
+                    indexer.PushMessages(messageIndexObjects);
                 }
             }
-            return messageIndexObjects;
         }
     }
 }

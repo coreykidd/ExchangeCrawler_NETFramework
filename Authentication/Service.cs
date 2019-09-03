@@ -94,7 +94,7 @@ namespace ExchangeCrawl
             {
                 service.TraceListener = listener;
                 service.TraceFlags = TraceFlags.All;
-                service.TraceEnabled = true;
+                service.TraceEnabled = false;
             }
 
             service.Credentials = new NetworkCredential(userData.EmailAddress, userData.Password);
