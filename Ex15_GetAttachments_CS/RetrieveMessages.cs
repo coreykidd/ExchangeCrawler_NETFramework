@@ -23,7 +23,7 @@ namespace ExchangeCrawl
             foreach (Folder f in childFolders)
             {
                 if ((String.Equals(f.DisplayName, "Inbox")) || (String.Equals(f.DisplayName, "Conversation History"))
-                    || (String.Equals(f.DisplayName, "Save")) || (String.Equals(f.DisplayName, "Trips")))
+                    || (String.Equals(f.DisplayName, "Save")) || (String.Equals(f.DisplayName, "Trips")) || (String.Equals(f.DisplayName, "Sent Items")))
                 {
                     allFolders.Add(f);
                     if (f.ChildFolderCount > 0)
@@ -34,13 +34,10 @@ namespace ExchangeCrawl
                 }
             }
 
-            //Get all messages in all folders
-            //Moved push into this for loop so they could be pushed in and begin indexing rather than doing all at once
+            //Get (and index) all messages in all folders
             foreach (Folder f in allFolders)
             {
                 GetMessages(f);
-                //Indexer indexer = new Indexer();
-                //indexer.PushMessages(messageIndexObjects);
             }
         }
 
@@ -59,20 +56,17 @@ namespace ExchangeCrawl
             }
         }
 
-        //public static List<MessageIndexObject> GetMessages(Folder folder)
         public static void GetMessages(Folder folder)
         {
             int itemCount = folder.TotalCount;
             FindItemsResults<Item> results = null;
-            //List<MessageIndexObject> messageIndexObjects = new List<MessageIndexObject>();
 
             for (int i = 0; i < itemCount; i += 200)
             {
                 List<MessageIndexObject> messageIndexObjects = new List<MessageIndexObject>();
-                ItemView view = new ItemView(10, i);
+                ItemView view = new ItemView(200, i);
                 results = service.FindItems(folder.Id, view);
                 PropertySet propSet = new PropertySet(BasePropertySet.FirstClassProperties, EmailMessageSchema.TextBody);
-
                 ExtendedPropertyDefinition PR_EntryId = new ExtendedPropertyDefinition(0x0FFF, MapiPropertyType.Binary);
                 propSet.Add(ItemSchema.StoreEntryId);
                 propSet.Add(PR_EntryId);
@@ -90,8 +84,6 @@ namespace ExchangeCrawl
                             HexEntryId = BitConverter.ToString(EntryVal).Replace("-", "");
                         }
                         messageIndexObjects.Add(new MessageIndexObject(k.Subject, k.TextBody, HexEntryId));
-                        //Console.WriteLine(HexEntryId);
-                        //Console.ReadLine();
                     }
                     //Push 200 messages for indexing at a time
                     Indexer indexer = new Indexer();
