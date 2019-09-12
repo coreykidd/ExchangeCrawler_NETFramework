@@ -34,15 +34,10 @@ namespace ExchangeCrawl
                 }
             }
 
-            //Get (and index) all messages in all folders
             foreach (Folder f in allFolders)
             {
                 GetMessages(f);
-                //Console.WriteLine(f.DisplayName);
-                //Console.WriteLine(f.TotalCount);
-                //Console.WriteLine();
             }
-            Console.ReadLine();
         }
 
         public static void GetSubFolders(Folder folder, FolderView folderView, List<Folder> allFolders)
@@ -65,15 +60,12 @@ namespace ExchangeCrawl
             int itemCount = folder.TotalCount;
             FindItemsResults<Item> results = null;
 
-            //for (int i = 0; i < itemCount; i += 200)
-            for (int i = 4400; i < 4600; i += 200)
+            for (int i = 0; i < itemCount; i += 200)
             {
-                Console.WriteLine(i.ToString());
                 List<MessageIndexObject> messageIndexObjects = new List<MessageIndexObject>();
                 ItemView view = new ItemView(200, i);
                 results = service.FindItems(folder.Id, view);
                 
-                //if (results.Items.Count > 0)
                 if (results.Items.Count > 0)
                 {
                     PropertySet propSet = new PropertySet(BasePropertySet.FirstClassProperties, EmailMessageSchema.TextBody);
@@ -89,11 +81,29 @@ namespace ExchangeCrawl
                         {
                             HexEntryId = BitConverter.ToString(EntryVal).Replace("-", "");
                         }
-                        messageIndexObjects.Add(new MessageIndexObject(k.Subject, k.TextBody, HexEntryId));
+                        try
+                        {
+                            messageIndexObjects.Add(new MessageIndexObject(k.Subject, k.TextBody, HexEntryId));
+                        }
+                        catch (ServiceObjectPropertyException sope)
+                        {
+                            try
+                            {
+                                messageIndexObjects.Add(new MessageIndexObject(k.Subject, "", ""));
+                            }
+                            catch (Exception e)
+                            {
+
+                            }
+                            finally
+                            {
+                                //TODO Logging code goes here
+                            }
+                        }
                     }
                     //Push 200 messages for indexing at a time
-                    //Indexer indexer = new Indexer();
-                    //indexer.PushMessages(messageIndexObjects);
+                    Indexer indexer = new Indexer();
+                    indexer.PushMessages(messageIndexObjects);
                 }
             }
         }
