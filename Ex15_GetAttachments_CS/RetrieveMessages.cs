@@ -34,7 +34,6 @@ namespace ExchangeCrawl
                 }
             }
 
-            //Get (and index) all messages in all folders
             foreach (Folder f in allFolders)
             {
                 GetMessages(f);
@@ -66,24 +65,41 @@ namespace ExchangeCrawl
                 List<MessageIndexObject> messageIndexObjects = new List<MessageIndexObject>();
                 ItemView view = new ItemView(200, i);
                 results = service.FindItems(folder.Id, view);
-                PropertySet propSet = new PropertySet(BasePropertySet.FirstClassProperties, EmailMessageSchema.TextBody);
-                ExtendedPropertyDefinition PR_EntryId = new ExtendedPropertyDefinition(0x0FFF, MapiPropertyType.Binary);
-                propSet.Add(ItemSchema.StoreEntryId);
-                propSet.Add(PR_EntryId);
-
+                
                 if (results.Items.Count > 0)
                 {
+                    PropertySet propSet = new PropertySet(BasePropertySet.FirstClassProperties, EmailMessageSchema.TextBody);
+                    ExtendedPropertyDefinition extendedProps = new ExtendedPropertyDefinition(0x0FFF, MapiPropertyType.Binary);
+                    propSet.Add(ItemSchema.StoreEntryId);
+                    propSet.Add(extendedProps);
                     service.LoadPropertiesForItems(results, propSet);
-
                     foreach (Item k in results)
                     {
                         Byte[] EntryVal = null;
                         String HexEntryId = "";
-                        if (k.TryGetProperty(PR_EntryId, out EntryVal))
+                        if (k.TryGetProperty(extendedProps, out EntryVal))
                         {
                             HexEntryId = BitConverter.ToString(EntryVal).Replace("-", "");
                         }
-                        messageIndexObjects.Add(new MessageIndexObject(k.Subject, k.TextBody, HexEntryId));
+                        try
+                        {
+                            messageIndexObjects.Add(new MessageIndexObject(k.Subject, k.TextBody, HexEntryId));
+                        }
+                        catch (ServiceObjectPropertyException sope)
+                        {
+                            try
+                            {
+                                messageIndexObjects.Add(new MessageIndexObject(k.Subject, "", ""));
+                            }
+                            catch (Exception e)
+                            {
+
+                            }
+                            finally
+                            {
+                                //TODO Logging code goes here
+                            }
+                        }
                     }
                     //Push 200 messages for indexing at a time
                     Indexer indexer = new Indexer();
